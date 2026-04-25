@@ -9,7 +9,7 @@ from typing import Optional
 from sqlalchemy import String, DateTime, Date, ForeignKey, Enum as SQLEnum, Text, Numeric, JSON
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from app.models.user import Base
+from app.db import Base
 from app.constants import CaseType, CaseStatus, TimelineEventType
 
 
@@ -35,9 +35,9 @@ class Case(Base):
     deposit_amount: Mapped[Optional[float]] = mapped_column(Numeric(10, 2), nullable=True)
     deposit_returned: Mapped[Optional[float]] = mapped_column(Numeric(10, 2), nullable=True)
     
-    # Metadata
+    # Extra data
     jurisdiction: Mapped[Optional[str]] = mapped_column(String(100), nullable=True)  # State/city
-    metadata: Mapped[Optional[dict]] = mapped_column(JSON, nullable=True)
+    extra_data: Mapped[Optional[dict]] = mapped_column(JSON, nullable=True)
     
     # Timestamps
     created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
@@ -67,7 +67,7 @@ class TimelineEvent(Base):
     
     # Source (auto-extracted, manual, etc.)
     source: Mapped[str] = mapped_column(String(50), default="manual")
-    metadata: Mapped[Optional[dict]] = mapped_column(JSON, nullable=True)
+    extra_data: Mapped[Optional[dict]] = mapped_column(JSON, nullable=True)
     
     # Timestamps
     created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)

@@ -6,10 +6,10 @@ import uuid
 from datetime import datetime
 from typing import Optional
 
-from sqlalchemy import String, DateTime, Enum as SQLEnum, Text, Boolean
+from sqlalchemy import String, DateTime, Integer, Enum as SQLEnum, Text, Boolean
 from sqlalchemy.orm import Mapped, mapped_column
 
-from app.models.user import Base
+from app.db import Base
 from app.constants import TidbitCategory
 
 

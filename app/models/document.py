@@ -9,7 +9,7 @@ from typing import Optional
 from sqlalchemy import String, DateTime, Integer, ForeignKey, Enum as SQLEnum, Text, JSON
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from app.models.user import Base
+from app.db import Base
 from app.constants import DocumentType
 
 

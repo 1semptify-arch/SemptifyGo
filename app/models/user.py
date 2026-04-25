@@ -7,14 +7,10 @@ from datetime import datetime
 from typing import Optional
 
 from sqlalchemy import String, DateTime, ForeignKey, Enum as SQLEnum, Text
-from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
+from sqlalchemy.orm import Mapped, mapped_column, relationship
 
+from app.db import Base
 from app.constants import UserRole, StorageProvider
-
-
-class Base(DeclarativeBase):
-    """Base model class."""
-    pass
 
 
 class User(Base):

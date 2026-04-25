@@ -85,3 +85,7 @@ async def require_role(role: str):
             )
         return user
     return _check_role
+
+
+# Aliases for cleaner imports
+get_current_user_optional = get_current_user

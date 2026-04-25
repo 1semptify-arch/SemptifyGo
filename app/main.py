@@ -12,6 +12,14 @@ from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 
 from app.config import get_settings
+from app.db import init_db, close_db
+from app.api import (
+    cases_router,
+    documents_router,
+    tidbits_router,
+    users_router,
+    auth_router,
+)
 
 # Configure logging
 logging.basicConfig(
@@ -30,9 +38,14 @@ async def lifespan(app: FastAPI):
     logger.info(f"🔧 Environment: {settings.environment}")
     logger.info(f"🔒 Security mode: {settings.security_mode}")
     
+    # Initialize database
+    await init_db()
+    logger.info("📦 Database initialized")
+    
     yield
     
     # Shutdown
+    await close_db()
     logger.info(f"🛑 Shutting down {settings.app_name}")
 
 
@@ -61,12 +74,19 @@ def create_app() -> FastAPI:
     # Static files
     app.mount("/static", StaticFiles(directory="static"), name="static")
     
+    # Include API routers
+    app.include_router(cases_router)
+    app.include_router(documents_router)
+    app.include_router(tidbits_router)
+    app.include_router(users_router)
+    app.include_router(auth_router)
+    
     # Health check endpoint
     @app.get("/health")
     async def health_check():
         return {"status": "healthy", "version": settings.app_version}
     
-    # Root endpoint
+    # Root endpoint - serve the app
     @app.get("/")
     async def root():
         return {
