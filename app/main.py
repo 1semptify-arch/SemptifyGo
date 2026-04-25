@@ -13,13 +13,7 @@ from fastapi.staticfiles import StaticFiles
 
 from app.config import get_settings
 from app.db import init_db, close_db
-from app.api import (
-    cases_router,
-    documents_router,
-    tidbits_router,
-    users_router,
-    auth_router,
-)
+from app.routers.auth import router as auth_router
 
 # Configure logging
 logging.basicConfig(
@@ -75,10 +69,6 @@ def create_app() -> FastAPI:
     app.mount("/static", StaticFiles(directory="static"), name="static")
     
     # Include API routers
-    app.include_router(cases_router)
-    app.include_router(documents_router)
-    app.include_router(tidbits_router)
-    app.include_router(users_router)
     app.include_router(auth_router)
     
     # Health check endpoint
