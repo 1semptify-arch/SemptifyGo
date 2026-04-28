@@ -1,11 +1,11 @@
-# Semptify55
+# Semptify Go
 
 [![Deploy on Render](https://img.shields.io/badge/Render-Deploy-blue)](https://render.com)
 [![License: AGPL-3.0](https://img.shields.io/badge/License-AGPL--3.0-blue.svg)](LICENSE)
 
 **Your lease. Your documents. Your deposit.**
 
-Semptify55 is a free, open-source mobile web app that helps tenants organize their housing journey — from signing the lease to getting their full deposit back. Upload documents, build timelines, and generate demand letters when landlords withhold unfair deductions.
+Semptify Go is a free, open-source mobile web app that helps tenants organize their housing journey — from signing the lease to getting their full deposit back. Upload documents, build timelines, and generate demand letters when landlords withhold unfair deductions.
 
 Built mobile-first for Android and iOS browsers. Your data lives in your Google Drive, Dropbox, or OneDrive — we don't store it. Free forever. No ads. No accounts. Just tenant rights.
 
@@ -111,13 +111,13 @@ Visit `http://localhost:8000`
    ↓ Generate demand letters, know your rights
 ```
 
-Your documents never touch our servers. They're stored in **your** cloud account, in a `Semptify55/` folder you control.
+Your documents never touch our servers. They're stored in **your** cloud account, in a `Semptify Go/` folder you control.
 
 ---
 
 ## Tenant Rights Focus
 
-Semptify55 is built for truth from **both** sides:
+Semptify Go is built for truth from **both** sides:
 
 - We don't assume tenant claims are automatically true
 - We don't assume landlord claims are automatically true

@@ -1,0 +1,128 @@
+/* Semptify Go — Mobile-first PWA styles */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --blue:   #2563eb;
+  --dark:   #111827;
+  --muted:  #6b7280;
+  --light:  #f3f4f6;
+  --white:  #ffffff;
+  --radius: 14px;
+  --nav-h:  62px;
+  --header-h: 70px;
+}
+
+html, body { height: 100%; background: var(--light); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: var(--dark); }
+
+#app { display: flex; flex-direction: column; height: 100dvh; overflow: hidden; }
+
+/* ── Header ──────────────────────────────────────────────── */
+.go-header {
+  background: var(--blue);
+  color: var(--white);
+  padding: .9rem 1.25rem .7rem;
+  flex-shrink: 0;
+}
+.go-logo { font-size: 1.4rem; font-weight: 800; letter-spacing: -.02em; }
+.go-logo span { opacity: .75; font-weight: 400; }
+.go-tagline { font-size: .75rem; opacity: .8; margin-top: .1rem; }
+
+/* ── Main / screens ──────────────────────────────────────── */
+.go-main { flex: 1; overflow-y: auto; padding: 1rem 1rem calc(var(--nav-h) + .5rem); }
+
+.go-screen { display: none; }
+.go-screen.active { display: block; }
+
+.go-screen-title { font-size: 1.15rem; font-weight: 700; margin-bottom: .4rem; }
+.go-hint { font-size: .85rem; color: var(--muted); margin-bottom: 1rem; }
+.go-empty { color: var(--muted); font-size: .9rem; text-align: center; padding: 2rem 0; }
+
+/* ── Upload zone ─────────────────────────────────────────── */
+.go-upload-zone {
+  border: 2px dashed #c7d2fe;
+  background: #eff6ff;
+  border-radius: var(--radius);
+  padding: 2.5rem 1rem;
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  transition: background .15s;
+}
+.go-upload-zone:active { background: #dbeafe; }
+.go-upload-zone input[type=file] {
+  position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%;
+}
+.go-upload-icon { font-size: 2.5rem; margin-bottom: .5rem; }
+.go-upload-label { font-weight: 600; font-size: 1rem; }
+.go-upload-sub { font-size: .82rem; color: var(--muted); margin-top: .2rem; }
+
+/* ── Upload meta ─────────────────────────────────────────── */
+.go-upload-meta { display: flex; flex-direction: column; gap: .75rem; margin-top: 1rem; }
+.go-select, .go-textarea {
+  width: 100%; padding: .75rem 1rem; border: 1.5px solid #d1d5db;
+  border-radius: 10px; font-size: .95rem; background: var(--white);
+  color: var(--dark); appearance: none;
+}
+.go-select:focus, .go-textarea:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(37,99,235,.12); }
+.go-textarea { resize: none; }
+
+.go-btn { width: 100%; padding: .9rem; border: none; border-radius: 10px; font-size: 1rem; font-weight: 700; cursor: pointer; }
+.go-btn-primary { background: var(--blue); color: var(--white); }
+.go-btn-primary:active { background: #1d4ed8; }
+
+.go-result { padding: .75rem 1rem; border-radius: 10px; font-size: .9rem; margin-top: .5rem; }
+.go-result.success { background: #dcfce7; color: #166534; }
+.go-result.error   { background: #fee2e2; color: #991b1b; }
+
+/* ── Timeline ────────────────────────────────────────────── */
+.go-timeline { display: flex; flex-direction: column; gap: .75rem; }
+.go-timeline-item {
+  background: var(--white); border-radius: var(--radius);
+  padding: .9rem 1rem; border-left: 4px solid var(--blue);
+  box-shadow: 0 1px 4px rgba(0,0,0,.06);
+}
+.go-timeline-date { font-size: .75rem; color: var(--muted); margin-bottom: .25rem; }
+.go-timeline-title { font-weight: 600; font-size: .95rem; }
+.go-timeline-type { font-size: .78rem; color: var(--muted); margin-top: .15rem; }
+
+/* ── Inbox ───────────────────────────────────────────────── */
+.go-inbox { display: flex; flex-direction: column; gap: .75rem; }
+.go-inbox-item {
+  background: var(--white); border-radius: var(--radius);
+  padding: .9rem 1rem; box-shadow: 0 1px 4px rgba(0,0,0,.06);
+}
+.go-inbox-from { font-weight: 600; font-size: .9rem; }
+.go-inbox-msg  { font-size: .85rem; color: var(--muted); margin-top: .2rem; }
+
+/* ── Help cards ──────────────────────────────────────────── */
+.go-help-cards { display: flex; flex-direction: column; gap: .85rem; }
+.go-help-card {
+  background: var(--white); border-radius: var(--radius);
+  padding: 1rem 1.1rem; box-shadow: 0 1px 4px rgba(0,0,0,.06);
+}
+.go-help-icon { font-size: 1.5rem; margin-bottom: .35rem; }
+.go-help-card strong { font-size: .95rem; display: block; margin-bottom: .3rem; }
+.go-help-card p { font-size: .85rem; color: var(--muted); line-height: 1.5; }
+.go-help-card a { color: var(--blue); }
+
+/* ── Bottom nav ──────────────────────────────────────────── */
+.go-nav {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  background: var(--white);
+  border-top: 1px solid #e5e7eb;
+  display: flex;
+  z-index: 100;
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+.go-nav-btn {
+  flex: 1; background: none; border: none; cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: .2rem; color: var(--muted); font-size: .7rem; font-weight: 500;
+  padding: .4rem 0; transition: color .15s;
+}
+.go-nav-btn.active { color: var(--blue); }
+.go-nav-icon { font-size: 1.35rem; line-height: 1; }
+
+/* ── Utilities ───────────────────────────────────────────── */
+.hidden { display: none !important; }

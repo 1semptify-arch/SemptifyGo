@@ -6,89 +6,119 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="apple-touch-icon" href="/static/images/icon-192.png">
-    <title>Semptify55 - Your Lease. Your Documents. Your Deposit.</title>
-    <link rel="stylesheet" href="/static/css/app.css">
+    <title>Semptify Go — Your Rights. Your Docs. Your Phone.</title>
+    <link rel="stylesheet" href="/static/css/go.css">
     <link rel="manifest" href="/static/manifest.json">
 </head>
 <body>
     <div id="app">
-        <header class="app-header">
-            <h1>Semptify55</h1>
-            <p class="tagline">Your lease. Your documents. Your deposit.</p>
+        <header class="go-header">
+            <div class="go-logo">Semptify <span>Go</span></div>
+            <p class="go-tagline">Your rights. Your docs. Your phone.</p>
         </header>
 
-        <main class="app-main">
-            <section id="auth-section" class="section">
-                <h2>Connect Your Storage</h2>
-                <p class="subtitle">Your data stays in your cloud. We never store it.</p>
-                <div class="storage-buttons">
-                    <button class="btn btn-storage btn-google" data-provider="google_drive">
-                        <span class="icon">📁</span> Google Drive
-                    </button>
-                    <button class="btn btn-storage btn-dropbox" data-provider="dropbox">
-                        <span class="icon">📦</span> Dropbox
-                    </button>
-                    <button class="btn btn-storage btn-onedrive" data-provider="onedrive">
-                        <span class="icon">☁️</span> OneDrive
-                    </button>
+        <main class="go-main">
+
+            <!-- ── SCREEN: Upload ─────────────────────────────────── -->
+            <section id="screen-upload" class="go-screen active">
+                <h2 class="go-screen-title">Add a Document</h2>
+                <p class="go-hint">Photo, PDF, or file — stored in your cloud, never ours.</p>
+                <div class="go-upload-zone" id="upload-zone">
+                    <div class="go-upload-icon">📎</div>
+                    <div class="go-upload-label">Tap to choose a file</div>
+                    <div class="go-upload-sub">or take a photo</div>
+                    <input type="file" id="file-input" accept="image/*,application/pdf,.doc,.docx" aria-label="Choose a document or photo to upload" title="Choose a document or photo"/>
+                </div>
+                <div class="go-upload-meta hidden" id="upload-meta">
+                    <select id="upload-case" class="go-select" aria-label="Select a case" title="Select a case">
+                        <option value="">— Select a case —</option>
+                    </select>
+                    <select id="upload-type" class="go-select" aria-label="Document type" title="Document type">
+                        <option value="lease">Lease</option>
+                        <option value="notice">Notice</option>
+                        <option value="photo">Photo / Evidence</option>
+                        <option value="receipt">Receipt</option>
+                        <option value="correspondence">Correspondence</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <textarea id="upload-note" class="go-textarea" rows="2" placeholder="Optional note…"></textarea>
+                    <button class="go-btn go-btn-primary" id="upload-submit">Upload</button>
+                </div>
+                <div id="upload-result" class="go-result hidden"></div>
+            </section>
+
+            <!-- ── SCREEN: Timeline ──────────────────────────────── -->
+            <section id="screen-timeline" class="go-screen">
+                <h2 class="go-screen-title">My Timeline</h2>
+                <div id="timeline-list" class="go-timeline">
+                    <p class="go-empty">No events yet. Upload a document to start your record.</p>
                 </div>
             </section>
 
-            <section id="cases-section" class="section hidden">
-                <div class="section-header">
-                    <h2>Your Cases</h2>
-                    <button id="new-case-btn" class="btn btn-primary">+ New Case</button>
-                </div>
-                <div id="cases-list" class="cards-list">
-                    <p class="empty-state">No cases yet. Create your first case.</p>
+            <!-- ── SCREEN: Inbox ─────────────────────────────────── -->
+            <section id="screen-inbox" class="go-screen">
+                <h2 class="go-screen-title">Inbox</h2>
+                <div id="inbox-list" class="go-inbox">
+                    <p class="go-empty">No messages.</p>
                 </div>
             </section>
 
-            <section id="tidbits-section" class="section hidden">
-                <h2>Tenant Tidbits</h2>
-                <div id="tidbits-list" class="tidbits-list">
-                    <p class="empty-state">Loading tips...</p>
+            <!-- ── SCREEN: Help ──────────────────────────────────── -->
+            <section id="screen-help" class="go-screen">
+                <h2 class="go-screen-title">Know Your Rights</h2>
+                <div class="go-help-cards">
+                    <div class="go-help-card">
+                        <div class="go-help-icon">🏠</div>
+                        <strong>Habitability</strong>
+                        <p>Your landlord must keep the unit safe and livable. Document every repair request in writing.</p>
+                    </div>
+                    <div class="go-help-card">
+                        <div class="go-help-icon">💰</div>
+                        <strong>Security Deposit</strong>
+                        <p>In MN, landlords must return your deposit within 21 days of move-out or provide an itemized list.</p>
+                    </div>
+                    <div class="go-help-card">
+                        <div class="go-help-icon">📋</div>
+                        <strong>Eviction Notice</strong>
+                        <p>You must receive written notice before any eviction filing. Keep every notice you receive.</p>
+                    </div>
+                    <div class="go-help-card">
+                        <div class="go-help-icon">🔒</div>
+                        <strong>Retaliation</strong>
+                        <p>It is illegal for a landlord to evict you for reporting code violations or organizing with neighbors.</p>
+                    </div>
+                    <div class="go-help-card">
+                        <div class="go-help-icon">📞</div>
+                        <strong>Get Help</strong>
+                        <p>HOME Line (MN): <a href="tel:6127281411">612-728-1411</a><br>
+                        Legal Aid: <a href="tel:6125341313">612-534-1313</a></p>
+                    </div>
                 </div>
             </section>
+
         </main>
 
-        <nav class="app-nav hidden">
-            <button class="nav-btn active" data-view="cases">Cases</button>
-            <button class="nav-btn" data-view="tidbits">Tips</button>
-            <button class="nav-btn" data-view="settings">Settings</button>
+        <!-- ── Bottom nav ───────────────────────────────────────── -->
+        <nav class="go-nav">
+            <button class="go-nav-btn active" data-screen="upload">
+                <span class="go-nav-icon">📎</span>
+                <span class="go-nav-label">Upload</span>
+            </button>
+            <button class="go-nav-btn" data-screen="timeline">
+                <span class="go-nav-icon">📅</span>
+                <span class="go-nav-label">Timeline</span>
+            </button>
+            <button class="go-nav-btn" data-screen="inbox">
+                <span class="go-nav-icon">📬</span>
+                <span class="go-nav-label">Inbox</span>
+            </button>
+            <button class="go-nav-btn" data-screen="help">
+                <span class="go-nav-icon">⚖️</span>
+                <span class="go-nav-label">Rights</span>
+            </button>
         </nav>
     </div>
 
-    <div id="case-modal" class="modal hidden">
-        <div class="modal-content">
-            <h3>New Case</h3>
-            <form id="case-form">
-                <div class="form-group">
-                    <label for="case-title">Title</label>
-                    <input type="text" id="case-title" required placeholder="e.g., Deposit Dispute - 123 Main St">
-                </div>
-                <div class="form-group">
-                    <label for="case-type">Type</label>
-                    <select id="case-type">
-                        <option value="deposit_dispute">Deposit Dispute</option>
-                        <option value="repair_issue">Repair Issue</option>
-                        <option value="lease_violation">Lease Violation</option>
-                        <option value="eviction_defense">Eviction Defense</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="case-description">Description</label>
-                    <textarea id="case-description" rows="3" placeholder="Brief description..."></textarea>
-                </div>
-                <div class="form-actions">
-                    <button type="button" class="btn btn-secondary" id="cancel-case">Cancel</button>
-                    <button type="submit" class="btn btn-primary">Create Case</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <script src="/static/js/app.js"></script>
+    <script src="/static/js/go.js"></script>
 </body>
 </html>
